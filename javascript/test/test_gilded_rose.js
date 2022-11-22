@@ -42,7 +42,7 @@ describe("Gilded Rose", function() {
       gildedRose.updateQuality();
     }
 
-    const text = fs.readFileSync("../golden-master/expected-output.txt", "UTF-8");
+    const text = fs.readFileSync("./golden-master/expected-output.txt", "UTF-8");
     const lines = text.split(/\r?\n/);
     const expectedLog = lines.filter(x => x.length != 0);
 
