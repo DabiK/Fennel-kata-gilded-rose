@@ -1,6 +1,7 @@
 const { AGED_BRIE, BACKSTAGE_PASSES_TO_A_TAF,SULFURAS } = require("./product");
 const MAX_QUALITY = 50;
 const MIN_QUALITY = 0;
+const LIMIT_SELLIN =0;
 
 class Item {
   constructor(name, sellIn, quality){
@@ -20,6 +21,10 @@ class Item {
 
   setQualityToZero(){
     this.quality = 0;
+  }
+
+  decreaseSellIn(){
+    this.sellIn --;
   }
 }
 
@@ -51,9 +56,9 @@ updateQuality() {
       }
     }
     if (item.name != SULFURAS) {
-      item.sellIn = item.sellIn - 1;
+      item.decreaseSellIn();
     }
-    if (item.sellIn < 0) {
+    if (item.sellIn < LIMIT_SELLIN) {
       if (item.name != AGED_BRIE) {
         if (item.name != BACKSTAGE_PASSES_TO_A_TAF) {
           if (item.name != SULFURAS) {
