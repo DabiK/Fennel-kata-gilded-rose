@@ -14,6 +14,13 @@ describe("Gilded Rose", function() {
     assert.equal(foo.quality, 9);
   });
 
+  it("should not update quality of a froozen item", function() {
+    const quality = 10;
+    const foo = new Item("foo", 20, quality,80,true);
+    foo.decreaseQuality()
+    assert.equal(foo.quality, quality);
+  });
+
   specify('golden master', function() {
     const { Shop, Item } = require("../src/gilded_rose");
 
@@ -21,8 +28,8 @@ describe("Gilded Rose", function() {
       new Item("+5 Dexterity Vest", 10, 20),
       new Item("Aged Brie", 2, 0),
       new Item("Elixir of the Mongoose", 5, 7),
-      new Item("Sulfuras, Hand of Ragnaros", 0, 80,80),
-      new Item("Sulfuras, Hand of Ragnaros", -1, 80,80),
+      new Item("Sulfuras, Hand of Ragnaros", 0, 80,80,true),
+      new Item("Sulfuras, Hand of Ragnaros", -1, 80,80,true),
       new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
       new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
       new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),

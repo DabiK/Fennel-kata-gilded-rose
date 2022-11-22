@@ -9,18 +9,19 @@ const MIN_QUALITY = 0;
 const LIMIT_SELLIN = 0;
 
 class Item {
-  constructor(name, sellIn, quality, maxQuality = MAX_QUALITY) {
+  constructor(name, sellIn, quality, maxQuality = MAX_QUALITY, froozeQuality = false) {
     this.name = name;
     this.sellIn = sellIn;
     this.quality = quality;
     this.maxQuality = maxQuality;
+    this.froozeQuality = froozeQuality;
   }
   increaseQuality() {
     if (this.quality < this.maxQuality) this.quality++;
   }
 
   decreaseQuality() {
-    if (this.quality > MIN_QUALITY) this.quality--;
+    if (this.quality > MIN_QUALITY && !this.froozeQuality) this.quality--;
   }
 
   setQualityToZero() {
