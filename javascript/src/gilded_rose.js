@@ -4,13 +4,14 @@ const MIN_QUALITY = 0;
 const LIMIT_SELLIN =0;
 
 class Item {
-  constructor(name, sellIn, quality){
+  constructor(name, sellIn, quality,maxQuality = MAX_QUALITY){
     this.name = name;
     this.sellIn = sellIn;
     this.quality = quality;
+    this.maxQuality = maxQuality
   }
   increaseQuality(){
-    if(this.quality < MAX_QUALITY)
+    if(this.quality < this.maxQuality)
       this.quality++;
   }
 
